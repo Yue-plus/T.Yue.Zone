@@ -25,3 +25,9 @@ URL https://123ab.T.Yue.Zone
 
 - [Spring Boot](https://spring.io/projects/spring-boot#learn)
 - [Spring Framework](https://spring.io/projects/spring-framework#learn)
+- [Spring Data JPA](https://spring.io/projects/spring-data-jpa#learn)
+- [H2 Database](http://h2database.com/html/quickstart.html)
+
+## 参考
+
+- [如何设计短网址系统(TinyURL) | 灵魂机器](http://cn.soulmachine.me/2017-04-10-how-to-design-tinyurl/)
