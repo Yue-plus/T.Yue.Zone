@@ -20,6 +20,7 @@ configurations {
 repositories {
     maven { setUrl("https://maven.aliyun.com/repository/public/") }
     maven { setUrl("https://maven.aliyun.com/repository/spring/") }
+    // maven { setUrl("https://jitpack.io")}
     mavenCentral()
 }
 
@@ -29,7 +30,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.unbroken-dome.base62:base62:1.1.0")
+    // implementation("com.github.leprosus:kotlin-hashids:7eec277")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("com.h2database:h2")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
