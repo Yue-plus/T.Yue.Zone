@@ -13,3 +13,6 @@ spring:
       web-admin-password: '000'
   jpa:
     generate-ddl: true
+t:
+  host: ''
+  salt: 'Yue_plus YYDS!'

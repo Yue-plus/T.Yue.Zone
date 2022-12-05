@@ -1,0 +1,14 @@
+{
+  "properties": [
+    {
+      "name": "t.host",
+      "type": "java.lang.String",
+      "description": "主机."
+    },
+    {
+      "name": "t.salt",
+      "type": "java.lang.String",
+      "description": "Base62 编码加盐."
+    }
+  ]
+}

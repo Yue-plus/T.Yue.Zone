@@ -8,5 +8,8 @@ import org.springframework.stereotype.Repository
 @Repository
 @EnableJpaRepositories
 interface TEntityRepository : JpaRepository<TEntity, Long> {
-    fun findFirstByCode(code: String): TEntity
+    fun findById(code: String): TEntity
+    fun findFirstBySha1(sha1: String): TEntity
+    fun existsTEntityBySha1(sha1: String): Boolean
+//    fun findFirstByCode(code: String): TEntity
 }

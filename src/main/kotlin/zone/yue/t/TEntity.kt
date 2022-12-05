@@ -6,14 +6,18 @@ import org.springframework.data.annotation.ReadOnlyProperty
 
 @Entity
 data class TEntity(
-    @Column(unique = true) val code: String = "",
+    @ReadOnlyProperty @Column(unique = true) val sha1: String = "",
     @ReadOnlyProperty val url: String = "",
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    val id: Long? = null
+    val id: Long = 0
 
-    val count: Long = 0
+    private var count: Long = 0
+
+    fun addCount() {
+        count++;
+    }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
