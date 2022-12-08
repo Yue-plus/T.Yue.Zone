@@ -1,6 +1,5 @@
 package zone.yue.t
 
-import org.apache.commons.codec.digest.DigestUtils
 import org.hashids.Hashids
 import org.springframework.stereotype.Service
 
@@ -9,19 +8,16 @@ class TService(val ter: TEntityRepository, tc: TConfiguration) {
     private final val hashids = Hashids(tc.salt)
 
     fun putUrl(url: String): String {
-        val sha1 = DigestUtils.sha1Hex(url)
-
-        return if (ter.existsTEntityBySha1(sha1)) {
-            hashids.encode(ter.findFirstBySha1(sha1).id)
+        return if (ter.existsTEntityByUrl(url)) {
+            hashids.encode(ter.findFirstByUrl(url).id)
         } else {
-            val te = ter.saveAndFlush(TEntity(sha1 , url))
-            hashids.encode(te.id)
+            hashids.encode(ter.saveAndFlush(TEntity(url)).id)
         }
     }
 
     fun getUrlById(code: String): String {
         val te = ter.findById(hashids.decode(code)[0]).get()
-        te.addCount()
+        te.count++
         ter.save(te)
         return te.url
     }

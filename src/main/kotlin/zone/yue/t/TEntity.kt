@@ -2,21 +2,17 @@ package zone.yue.t
 
 import jakarta.persistence.*
 import org.hibernate.Hibernate
+import org.springframework.data.annotation.PersistenceCreator
 import org.springframework.data.annotation.ReadOnlyProperty
 
 @Entity
-data class TEntity(
-    @ReadOnlyProperty @Column(unique = true) val sha1: String = "",
-    @ReadOnlyProperty val url: String = "",
+data class TEntity @PersistenceCreator constructor (
+    @Id @GeneratedValue(strategy = GenerationType.AUTO) val id: Long = 0,
+    var count: Long = 0,
+    @ReadOnlyProperty var url: String = "",
 ) {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    val id: Long = 0
-
-    private var count: Long = 0
-
-    fun addCount() {
-        count++;
+    constructor(url: String) : this() {
+        this.url = url
     }
 
     override fun equals(other: Any?): Boolean {
