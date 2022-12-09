@@ -15,7 +15,12 @@ class TController(val ts: TService) {
     @GetMapping("/{code}")
     fun redirect(@PathVariable code: String, hsr: HttpServletResponse) {
         val url = ts.getUrlById(code)
-        hsr.setHeader("Location", url)
-        hsr.status = 301
+
+        if (url != null) {
+            hsr.setHeader("Location", url)
+            hsr.status = 301
+        } else {
+            hsr.status = 404
+        }
     }
 }

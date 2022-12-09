@@ -15,8 +15,15 @@ class TService(val ter: TEntityRepository, tc: TConfiguration) {
         }
     }
 
-    fun getUrlById(code: String): String {
-        val te = ter.findById(hashids.decode(code)[0]).get()
+    fun getUrlById(code: String): String? {
+        var te: TEntity?
+
+        try {
+            te = ter.findById(hashids.decode(code)[0]).get()
+        } catch (e: ArrayIndexOutOfBoundsException) {
+            return null
+        }
+
         te.count++
         ter.save(te)
         return te.url
